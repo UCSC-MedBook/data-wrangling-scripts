@@ -17,5 +17,9 @@ The following transformation wil lbe performed upon input into MedBook:
    3. Run `extract_tpm_columm_from_rsem_genes.results.sh` to create tpm sample files with two columns.
       This will create a folder `output` with a "*samplename*.tpm.tab" file for each sample.
     * `extract_tpm_columm_from_rsem_genes.results.sh "/home/ubuntu/run10" samples.txt`
-
-(TO BE CONTINUED)
+   4. Run `convert_ensembl_to_hugo.sh samples.txt`. This will create a new output folder `hugo.output`
+   
+   You now have a folder hugo.output with the sample files with the correct header and feature labels.
+   Note that features may have been dropped because the ensembl IDs did not have hugo names. this is expected.
+   
+   To combine the samples into one file for import into MedBook, use the combined_samples.py script found elsewhere in this repo. Note that `sample_paths.txt` has been created for you.
