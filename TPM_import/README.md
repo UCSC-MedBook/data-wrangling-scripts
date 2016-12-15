@@ -12,4 +12,10 @@ The following transformation wil lbe performed upon input into MedBook:
 
 
 #### How to transform TPM data using these scripts
-(TODO)
+   1. Collect your sample IDs and add them to a file, one per line, eg *samples.txt*.
+   2. Determine the path to your sample folders. eg */home/ubuntu/run10*
+   3. Run `extract_tpm_columm_from_rsem_genes.results.sh` to create tpm sample files with two columns.
+      This will create a folder `output` with a *samplename*.tpm.tab file for each sample.
+    * `extract_tpm_columm_from_rsem_genes.results.sh "/home/ubuntu/run10" samples.txt
+
+(TO BE CONTINUED)
