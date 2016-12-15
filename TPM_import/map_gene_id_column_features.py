@@ -1,9 +1,11 @@
 #!/usr/bin/python2.7
-
-# requires 2.7 for DictWriter.writeheader()
-
+import sys
 import csv
 from decimal import * # only for this stupid zeroes dropping thing
+
+
+
+# requires 2.7 for DictWriter.writeheader()
 
 # Given a tsv file,
 # maps items in the first column to new values as provided by a dictionary.
@@ -11,16 +13,16 @@ from decimal import * # only for this stupid zeroes dropping thing
 
 # Example : map a sample with ensembl IDs to Hugo gene names
 
-# INPUTS : todo dont hardcode
+# INPUTS
 
-MAPPING_FILE="EnsGeneID_Hugo_Observed_Conversions.txt"
+MAPPING_FILE="EnsGeneID_Hugo_Observed_Conversions.txt" # Can also be provided as an arg
 # New values in FIRST column
 # Old values in SECOND column
 # tab separated
 
 
-INPUT_FILE="sample.tsv"
-OUTPUT_FILE="output.tsv"
+INPUT_FILE="sample.tsv" # Can also be provided as an arg
+OUTPUT_FILE = INPUT_FILE + ".output.tsv"
 
 MAPPED_COLUMN_HEADER="gene_id"
 # If your old value maps to this key, drop the line anyhow
@@ -33,7 +35,7 @@ NEW_VALUE_TO_SKIP="NA"
 # already-hugoe'd version of that output. But whatever hugo translation the rna-seq
 # is running does some weird normalization and dropping of zeroes at the end of numbers
 # so we need to duplicate that when we're testing so that we don't get spurious diffs.
-UNNECESSARILY_DROP_ZEROES=True
+UNNECESSARILY_DROP_ZEROES=False
 
 
 def main():
@@ -84,4 +86,13 @@ def main():
 
 
 if __name__ == '__main__':
+  # Args (optional)
+  # Input filename, mapping_file (optional)
+
+  if(len(sys.argv)) > 1:
+   INPUT_FILE = sys.argv[1]
+   OUTPUT_FILE = INPUT_FILE + ".output.tsv"
+  if(len(sys.argv)) > 2:
+   MAPPING_FILE = sys.argv[2]   
+ 
   main()
