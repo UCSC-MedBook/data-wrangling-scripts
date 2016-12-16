@@ -32,7 +32,8 @@ The following transformation will be performed upon input into MedBook:
  The basedir is assumed to be in the format SAMPLENAME/rnaseq/RSEM/Hugo. If it's not (most often would be missing rnaseq) - it won't find the sample. Modify the script to match the format that the basedir is in
  
 #### Permission denied when placing tpm in original output folders
- You need to get the folders writable by you. There's an example script `make_group_writable.sh` to use for guidance. Note that someone with write access to the original folders is the one who can run this, not you.
+ You need to get the folders writable by you. Note that someone with write access to the original folders is the one who can run this, which is probably not you if they're not writable in the first place.
  
- If you have Docker access, you can mount the output folders as a docker volume and chmod it from there. Example:
+ If you have Docker access & you are know what you're doing, you can mount the output folders as a docker volume and chmod it from there. Example:
  `docker run --rm -it -v /path/to/original/dir/:/samples ubuntu /bin/bash`
+ Then from the `/samples` dir, run the following: `find . -name "Hugo" -exec chmod -v g+w {} \;`
