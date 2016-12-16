@@ -28,10 +28,10 @@ The following transformation will be performed upon input into MedBook:
      * `place_tpm_in_original_output.sh `*`original_basedir`*` samples.txt`
     
 ### Problems you may run into
- #### extract_tpm_columm can't find file or directory
+#### extract_tpm_columm can't find file or directory
  The basedir is assumed to be in the format SAMPLENAME/rnaseq/RSEM/Hugo. If it's not (most often would be missing rnaseq) - it won't find the sample. Modify the script to match the format that the basedir is in
  
- ### Permission denied when placing tpm in original output folders
+#### Permission denied when placing tpm in original output folders
  You need to get the folders writable by you. There's an example script `make_group_writable.sh` to use for guidance. Note that someone with write access to the original folders is the one who can run this, not you.
  
  If you have Docker access, you can mount the output folders as a docker volume and chmod it from there. Example:
