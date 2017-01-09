@@ -37,3 +37,7 @@ The following transformation will be performed upon input into MedBook:
  If you have Docker access & you are know what you're doing, you can mount the output folders as a docker volume and chmod it from there. Example:
  `docker run --rm -it -v /path/to/original/dir/:/samples ubuntu /bin/bash`
  Then from the `/samples` dir, run the following: `find . -name "Hugo" -exec chmod -v g+w {} \;`
+ 
+#### Confirm that directories match sample IDs
+ * Get the directory names into samples.txt, then run this and you get "sample ID \n directory name". Need to upgrade this to actually diff them but can also be manually inspected.
+ * ` while read line; do head -n 1 $line/rnaseq/RSEM/Hugo/rsem.genes.norm_counts.hugo.tab | cut -f2 ; echo $line ; done < ~/samples.txt `
